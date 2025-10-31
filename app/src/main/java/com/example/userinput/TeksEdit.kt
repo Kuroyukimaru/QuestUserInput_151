@@ -24,7 +24,9 @@ fun FormDataDiri(modifier: Modifier){
     val gender:List<String> = listOf("Laki-laki", "Perempuan")
 
     Column(
-        modifier = Modifier.padding(top = 50.dp),
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(top = 50.dp),
         verticalArrangement = Arrangement.Top,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -57,6 +59,16 @@ fun FormDataDiri(modifier: Modifier){
                 }
             }
         }
+
+        OutlinedTextField(
+            value = textAlamat,
+            singleLine = true,
+            modifier = Modifier.width(250.dp),
+            label = { Text(text = "Alamat Lengkap") },
+            onValueChange = { textAlamat = it
+            }
+        )
+
     }
 }
 
