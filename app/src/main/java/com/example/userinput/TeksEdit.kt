@@ -3,6 +3,7 @@ package com.example.userinput
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.selection.selectable
 import androidx.compose.material3.*
+import androidx.compose.material3.HorizontalDivider as Divider
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
