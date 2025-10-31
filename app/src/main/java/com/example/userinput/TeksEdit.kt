@@ -6,7 +6,10 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.graphics.Color
 
 @Composable
 fun FormDataDiri(modifier: Modifier){
@@ -65,9 +68,20 @@ fun FormDataDiri(modifier: Modifier){
             singleLine = true,
             modifier = Modifier.width(250.dp),
             label = { Text(text = "Alamat Lengkap") },
-            onValueChange = { textAlamat = it
+            onValueChange = {
+                textAlamat = it
             }
         )
+
+        Divider(
+            modifier = Modifier.padding(
+                bottom = dimensionResource(R.dimen.padding_medium),
+                top = dimensionResource(R.dimen.padding_medium)
+            ),
+            thickness = dimensionResource(R.dimen.padding_tipis),
+            color = Color.DarkGray
+        )
+
 
     }
 }
