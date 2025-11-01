@@ -58,6 +58,7 @@ fun FormPendaftaran(modifier: Modifier = Modifier) {
             textAlign = TextAlign.Center
         )
 
+        Spacer(modifier = Modifier.height(24.dp))
 
     }
 }
