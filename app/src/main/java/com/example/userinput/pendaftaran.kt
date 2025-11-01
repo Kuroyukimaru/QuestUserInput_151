@@ -35,7 +35,7 @@ fun FormPendaftaran(modifier: Modifier = Modifier) {
             .fillMaxSize()
             .background(
                 brush = Brush.verticalGradient(
-                    colors = listOf(Color(0xFFB388FF), Color.White)
+                    colors = listOf(Color(0xFF182EA2), Color.White)
                 )
             )
             .padding(24.dp),
@@ -50,7 +50,7 @@ fun FormPendaftaran(modifier: Modifier = Modifier) {
                 .fillMaxWidth()
                 .background(
                     brush = Brush.verticalGradient(
-                        listOf(Color(0xFF576EC2), Color(0xFF8898FF))
+                        listOf(Color(0xFF4450BB), Color(0xFF7491FF))
                     ),
                     shape = RoundedCornerShape(12.dp)
                 )
@@ -73,15 +73,17 @@ fun FormPendaftaran(modifier: Modifier = Modifier) {
                     .fillMaxWidth(),
                 horizontalAlignment = Alignment.Start
             ) {
+
                 OutlinedTextField(
                     value = textNama,
                     onValueChange = { textNama = it },
-                    label = { Text("Isi nama lengkap") },
+                    label = { Text("Isian nama lengkap") },
                     singleLine = true,
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(bottom = 16.dp)
                 )
+
                 Text("Jenis Kelamin", fontWeight = FontWeight.SemiBold)
                 genderList.forEach { gender ->
                     Row(
@@ -99,58 +101,79 @@ fun FormPendaftaran(modifier: Modifier = Modifier) {
                         )
                         Text(gender)
                     }
-                    Spacer(modifier = Modifier.height(12.dp))
+                }
 
+                Spacer(modifier = Modifier.height(12.dp))
 
-                    Text("Status Perkawinan", fontWeight = FontWeight.SemiBold)
-                    statusList.forEach { status ->
-                        Row(
-                            verticalAlignment = Alignment.CenterVertically,
-                            modifier = Modifier
-                                .selectable(
-                                    selected = textStatus == status,
-                                    onClick = { textStatus = status }
-                                )
-                                .padding(start = 8.dp, top = 4.dp)
-                        ) {
-                            RadioButton(
+                // Status Perkawinan
+                Text("Status Perkawinan", fontWeight = FontWeight.SemiBold)
+                statusList.forEach { status ->
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically,
+                        modifier = Modifier
+                            .selectable(
                                 selected = textStatus == status,
                                 onClick = { textStatus = status }
                             )
-                            Text(status)
-                        }
+                            .padding(start = 8.dp, top = 4.dp)
+                    ) {
+                        RadioButton(
+                            selected = textStatus == status,
+                            onClick = { textStatus = status }
+                        )
+                        Text(status)
                     }
-
-                    Spacer(modifier = Modifier.height(16.dp))
-
-                    OutlinedTextField(
-                        value = textAlamat,
-                        onValueChange = { textAlamat = it },
-                        label = { Text("Alamat") },
-                        singleLine = true,
-                        modifier = Modifier.fillMaxWidth()
-                    )
                 }
+
+                Spacer(modifier = Modifier.height(16.dp))
+
+                // Alamat
+                OutlinedTextField(
+                    value = textAlamat,
+                    onValueChange = { textAlamat = it },
+                    label = { Text("Alamat") },
+                    singleLine = true,
+                    modifier = Modifier.fillMaxWidth()
+                )
             }
+        }
 
-            Spacer(modifier = Modifier.height(24.dp))
+        Spacer(modifier = Modifier.height(24.dp))
 
-            Button(
-                onClick = {
-                    nama = textNama
-                    jenisKelamin = textJK
-                    statusPerkawinan = textStatus
-                    alamat = textAlamat
-                },
+        Button(
+            onClick = {
+                nama = textNama
+                jenisKelamin = textJK
+                statusPerkawinan = textStatus
+                alamat = textAlamat
+            },
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 8.dp)
+                .height(50.dp),
+            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF001473)),
+            shape = RoundedCornerShape(12.dp),
+            enabled = textNama.isNotEmpty() && textJK.isNotEmpty() && textStatus.isNotEmpty() && textAlamat.isNotEmpty()
+        ) {
+            Text("Submit", color = Color.White, fontSize = 16.sp)
+        }
+
+        Spacer(modifier = Modifier.height(24.dp))
+
+        if (nama.isNotEmpty()) {
+            ElevatedCard(
+                colors = CardDefaults.cardColors(containerColor = Color(0xFF3D59C0)),
+                shape = RoundedCornerShape(12.dp),
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(horizontal = 8.dp)
-                    .height(50.dp),
-                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF575CC2)),
-                shape = RoundedCornerShape(12.dp),
-                enabled = textNama.isNotEmpty() && textJK.isNotEmpty() && textStatus.isNotEmpty() && textAlamat.isNotEmpty()
             ) {
-                Text("Submit", color = Color.White, fontSize = 16.sp)
+                Column(modifier = Modifier.padding(16.dp)) {
+                    Text("Nama: $nama", color = Color.White)
+                    Text("Jenis Kelamin: $jenisKelamin", color = Color.White)
+                    Text("Status Perkawinan: $statusPerkawinan", color = Color.White)
+                    Text("Alamat: $alamat", color = Color.White)
+                }
             }
         }
     }
