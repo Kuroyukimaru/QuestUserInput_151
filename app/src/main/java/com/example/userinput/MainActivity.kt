@@ -1,5 +1,4 @@
 package com.example.userinput
-
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -20,7 +19,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             UserInputTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    FormDataDiri(
+                    FormPendaftaran(
                         modifier = Modifier.padding(innerPadding)
                     )
                 }
