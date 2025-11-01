@@ -99,6 +99,27 @@ fun FormPendaftaran(modifier: Modifier = Modifier) {
                         )
                         Text(gender)
                     }
+                    Spacer(modifier = Modifier.height(12.dp))
+
+
+                    Text("Status Perkawinan", fontWeight = FontWeight.SemiBold)
+                    statusList.forEach { status ->
+                        Row(
+                            verticalAlignment = Alignment.CenterVertically,
+                            modifier = Modifier
+                                .selectable(
+                                    selected = textStatus == status,
+                                    onClick = { textStatus = status }
+                                )
+                                .padding(start = 8.dp, top = 4.dp)
+                        ) {
+                            RadioButton(
+                                selected = textStatus == status,
+                                onClick = { textStatus = status }
+                            )
+                            Text(status)
+                        }
+                    }
                 }
             }
         }
