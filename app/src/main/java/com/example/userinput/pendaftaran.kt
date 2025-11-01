@@ -82,6 +82,24 @@ fun FormPendaftaran(modifier: Modifier = Modifier) {
                         .fillMaxWidth()
                         .padding(bottom = 16.dp)
                 )
+                Text("Jenis Kelamin", fontWeight = FontWeight.SemiBold)
+                genderList.forEach { gender ->
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically,
+                        modifier = Modifier
+                            .selectable(
+                                selected = textJK == gender,
+                                onClick = { textJK = gender }
+                            )
+                            .padding(start = 8.dp, top = 4.dp)
+                    ) {
+                        RadioButton(
+                            selected = textJK == gender,
+                            onClick = { textJK = gender }
+                        )
+                        Text(gender)
+                    }
+                }
             }
         }
     }
