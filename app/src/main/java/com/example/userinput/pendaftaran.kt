@@ -133,7 +133,25 @@ fun FormPendaftaran(modifier: Modifier = Modifier) {
                 }
             }
 
+            Spacer(modifier = Modifier.height(24.dp))
 
+            Button(
+                onClick = {
+                    nama = textNama
+                    jenisKelamin = textJK
+                    statusPerkawinan = textStatus
+                    alamat = textAlamat
+                },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 8.dp)
+                    .height(50.dp),
+                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF575CC2)),
+                shape = RoundedCornerShape(12.dp),
+                enabled = textNama.isNotEmpty() && textJK.isNotEmpty() && textStatus.isNotEmpty() && textAlamat.isNotEmpty()
+            ) {
+                Text("Submit", color = Color.White, fontSize = 16.sp)
+            }
         }
     }
 }
