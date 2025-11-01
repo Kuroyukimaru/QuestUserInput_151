@@ -120,8 +120,20 @@ fun FormPendaftaran(modifier: Modifier = Modifier) {
                             Text(status)
                         }
                     }
+
+                    Spacer(modifier = Modifier.height(16.dp))
+
+                    OutlinedTextField(
+                        value = textAlamat,
+                        onValueChange = { textAlamat = it },
+                        label = { Text("Alamat") },
+                        singleLine = true,
+                        modifier = Modifier.fillMaxWidth()
+                    )
                 }
             }
+
+
         }
     }
 }
